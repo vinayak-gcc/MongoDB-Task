@@ -39,6 +39,19 @@ const seedData = async () => {
     }
   });
 
+   const woman3 = await User.create({
+    role: "woman",
+    email: "woman3@example.com",
+    password: "hashedPassword2",
+    profile: {
+      name: "woman",
+      age: 30,
+      skills: ["TailwindCSS", "MongoDB"],
+      location: "Here",
+      resumeUrl: "http://example.com/resume3"
+    }
+  });
+
   // Insert 1 pending and 1 approved job poster
   const jobPosterPending = await User.create({
     role: "job-poster",
@@ -107,6 +120,13 @@ const seedData = async () => {
     userId: woman2._id,
     coverLetter: "I have relevant experience for this position.",
     status: "shortlisted"
+  });
+
+  await Application.create({
+    jobId: job3._id,
+    userId: woman3._id,
+    coverLetter: "I am excited to apply for this role",
+    status:"applied"
   });
 
   console.log("Database seeded successfully!");
